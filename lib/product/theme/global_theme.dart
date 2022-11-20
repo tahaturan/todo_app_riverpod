@@ -8,8 +8,12 @@ class GlobalTheme {
     textTheme: const TextTheme(headline3: TextStyle(color: Colors.white)),
     bottomNavigationBarTheme: const BottomNavigationBarThemeData(backgroundColor: Colors.red),
     floatingActionButtonTheme: FloatingActionButtonThemeData(
-      backgroundColor: ProjectColor.sumptuousPurble.color(),
-      splashColor: ProjectColor.blueDam.color(),
+        backgroundColor: ProjectColor.sumptuousPurble.color(), splashColor: ProjectColor.blueDam.color()),
+    inputDecorationTheme: InputDecorationTheme(
+      filled: true,
+      iconColor: ProjectColor.scaffoldBackgroundColor.color(),
+      focusColor: Colors.white,
+      fillColor: ProjectColor.karmaChameleon.color(),
     ),
   );
 }
