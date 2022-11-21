@@ -11,7 +11,7 @@ class GlobalTheme {
         backgroundColor: ProjectColor.sumptuousPurble.color(), splashColor: ProjectColor.blueDam.color()),
     inputDecorationTheme: InputDecorationTheme(
       filled: true,
-      iconColor: ProjectColor.scaffoldBackgroundColor.color(),
+      iconColor: ProjectColor.blueDam.color(),
       focusColor: Colors.white,
       fillColor: ProjectColor.karmaChameleon.color(),
     ),
