@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:todo_app_riverpod/core/model/todo_model.dart';
 import 'package:todo_app_riverpod/core/widgets/all_todos.dart';
+import 'package:todo_app_riverpod/core/widgets/complated_todos.dart';
+import 'package:todo_app_riverpod/core/widgets/person_page.dart';
+import 'package:todo_app_riverpod/core/widgets/un_completed_todos.dart';
 import 'package:todo_app_riverpod/product/constants/borderradius/projocet_border_radius.dart';
 import 'package:todo_app_riverpod/product/constants/color/project_color.dart';
 import 'package:todo_app_riverpod/product/widgets/custom_bottom_sheet.dart';
@@ -16,7 +18,6 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   late final TabController _tabController;
-  List<TodoModel> allTodos = TodoModel.dummyTodo();
 
   @override
   void initState() {
@@ -30,12 +31,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
       appBar: AppBarScreen(),
       body: TabBarView(
         controller: _tabController,
-        children: [
-          AllTodos(),
-          Container(color: Colors.green),
-          Container(color: Colors.cyan),
-          Container(color: Colors.black),
-        ],
+        children: const [AllTodos(), UnCompletedTodos(), CompletedTodos(), PersonPage()],
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {

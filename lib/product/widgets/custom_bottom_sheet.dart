@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:todo_app_riverpod/core/providers/all_providers.dart';
 import 'package:todo_app_riverpod/product/constants/color/project_color.dart';
 import 'package:todo_app_riverpod/product/constants/padding/project_padding.dart';
 
@@ -40,31 +42,26 @@ class _CustomBottomSheetState extends State<CustomBottomSheet> {
   }
 }
 
-class _CustomBottomTextfiled extends StatelessWidget {
+class _CustomBottomTextfiled extends ConsumerWidget {
   final TextEditingController controller;
 
   const _CustomBottomTextfiled({required this.controller});
 
-  void _onSbubmitted(String value) {
-    debugPrint(value);
-    controller.clear();
-  }
-
-  void _saveButton() {
-    if (controller.text.isNotEmpty) {
-      debugPrint(controller.text);
-      controller.clear();
-    }
-  }
-
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
         TextField(
           controller: controller,
-          onSubmitted: _onSbubmitted,
+          autofocus: true,
+          onSubmitted: (value) {
+            if (controller.text.isNotEmpty) {
+              ref.read(todoListProvider.notifier).addTodo(value);
+              controller.clear();
+              Navigator.pop(context);
+            }
+          },
           decoration: InputDecoration(
             hintText: 'Bugun Neler Yapacaksin',
             prefixIcon: const Icon(Icons.edit),
@@ -78,7 +75,13 @@ class _CustomBottomTextfiled extends StatelessWidget {
           ),
         ),
         TextButton(
-          onPressed: _saveButton,
+          onPressed: () {
+            if (controller.text.isNotEmpty) {
+              ref.read(todoListProvider.notifier).addTodo(controller.text);
+              controller.clear();
+              Navigator.pop(context);
+            }
+          },
           child: Row(
             mainAxisAlignment: MainAxisAlignment.end,
             crossAxisAlignment: CrossAxisAlignment.end,

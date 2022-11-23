@@ -7,14 +7,4 @@ class TodoModel {
     required this.description,
     this.iscomplated = false,
   });
-
-  static List<TodoModel> dummyTodo() {
-    return [
-      TodoModel(id: 'taha', description: 'spor', iscomplated: true),
-      TodoModel(id: 'taha', description: 'bilgisayar', iscomplated: true),
-      TodoModel(id: 'taha', description: 'fsdfsdf'),
-      TodoModel(id: 'taha', description: 'okul', iscomplated: true),
-      TodoModel(id: 'taha', description: 'kitap'),
-    ];
-  }
 }
