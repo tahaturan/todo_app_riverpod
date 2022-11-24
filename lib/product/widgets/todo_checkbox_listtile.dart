@@ -20,6 +20,10 @@ class _TodoCheckBoxListtileState extends ConsumerState<TodoCheckBoxListtile> {
   Widget build(BuildContext context) {
     return Dismissible(
       key: ValueKey(widget.todo.id),
+      background: Container(
+        color: Colors.red,
+        child: const Icon(Icons.delete_forever_outlined, color: Colors.white),
+      ),
       onDismissed: (direction) {
         ref.read(todoListProvider.notifier).remove(widget.todo);
       },
